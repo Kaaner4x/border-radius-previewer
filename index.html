@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Border Radius Previewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    /* Önizleme kutusu */
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: #3b82f6;
+      border: 2px solid #1d4ed8;
+      transition: border-radius 0.1s ease;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box"></div>
+
+  <div class="controls">
+    <label for="radiusInput">Border Radius (px):</label>
+    <input type="range" id="radiusInput" min="0" max="100" value="0">
+    <span id="radiusValue">0px</span>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+    const radiusInput = document.getElementById('radiusInput');
+    const radiusValue = document.getElementById('radiusValue');
+
+    radiusInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      
+      box.style.borderRadius = `${val}px`;
+      radiusValue.textContent = `${val}px`;
+    });
+  </script>
+</body>
+</html>
